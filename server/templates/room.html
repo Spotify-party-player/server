@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <input class="main-search-bar" type="text" placeholder="Track name" autofocus="autofocus" id="mainSearchBar">
+            <br>
+            <button id="searchButton" onclick="search()">
+                Search
+            </button>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <table id="searchTable">
+                </table>
+            </div>
+            <div class="col-6">
+                <table id="playlistTable">
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+
+    <script src="static/js/room.js"></script>
+
+{% endblock %}

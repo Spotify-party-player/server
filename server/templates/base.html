@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!--fonts-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/base.css">
+    <!-- <link href="{{ url_for('static', filename='css/style.scss.css') }}" rel="stylesheet" type="text/css"> -->
+    <!-- <link rel="shortcut icon" type="icon/ico" href="static/favicon.ico"> -->
+    <meta name="description" content="Tools for donation and player information gathering in game Deep Town.">
+    <meta name="keywords" content="spotify, player, share">
+</head>
+{% endblock %}
+
+<body>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    {% block navbar %}
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a href="/">
+                <img src="static/img/logo_header.svg" alt="">
+            </a>
+            <button class="navbar-toggler button-color-override" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="static/img/toggle_icon.svg" alt="">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="https://github.com/Spotify-party-player">Source</a>
+                    </li>
+                    {% if vm.room is none: %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signin">Create room</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/room?tag={{ vm.roomId }}">Room</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+    <br>
+    {% block content %}
+    body
+    {% endblock %}
+
+    {% block scripts %}
+
+    <script src="static/js/base.js"></script>
+
+    {% endblock %}
+
+</body>
+
+</html>

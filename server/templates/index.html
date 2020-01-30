@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col">
+                <!-- <div class="row"> -->
+                    <input class="main-search-bar" type="text" placeholder="Room ID" autofocus="autofocus" id="mainSearchBar">
+                <!-- </div>
+                <div class="row"> -->
+                    <button id="joinButton" onclick="joinRoom()">
+                        Join
+                    </button>
+                <!-- </div> -->
+            </div>
+            <div class="col">
+                <button id="createButton" onclick="createRoom()">
+                    Create room
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/index.js"></script>
+
+{% endblock %}
