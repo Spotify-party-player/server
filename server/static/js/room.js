@@ -52,10 +52,9 @@ socket.on('connected', function() {
     console.log("kek");
 });
 
-// socket.on('my_response', function(msg) {
-//     console.log(msg);
-//     console.log('kekekekeke');
-// });
+socket.on('get_active', function(msg) {
+    socket.emit('active', {roomId});
+});
 
 socket.on('update_list', function(response) {
     console.log(response);
@@ -70,14 +69,20 @@ socket.on('update_list', function(response) {
         `
         <tr>
         ${x[0]!=response.currentlyPlaying ?
-        `{<td>${x[1]}</td>
+        `<td>${x[1]}</td>
         <td>${x[2]}</td>
-        <td>${x[3]}</td>}` :
-        `{<td> <strong>${x[1]}</strong></td>
+        <td>${x[3]}</td>
+        <td><strong><a onclick="playAsNext();">Next</a> (${response.skipCount}/${response.connectedCount})</strong></td>` :
+        `<td> <strong>${x[1]}</strong></td>
         <td><strong>${x[2]}</strong></td>
-        <td><strong>${x[3]}</strong></td>}`}
+        <td><strong>${x[3]}</strong></td>
+        <td><strong><a onclick="skip();">Skip</a> (${response.skipCount}/${response.connectedCount})</strong></td>`}
         </tr>
         `)}
     `
     $("#playlistTable").html(html);
 });
+
+function skip() {
+    socket.emit("skip", {roomId});
+}

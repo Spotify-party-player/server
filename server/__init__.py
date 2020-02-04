@@ -9,7 +9,9 @@ from conf import SECRET_KEY, CLIENT_ID, CLIENT_KEY, REDIRECT_URI
 
 from flask import Flask
 from flask_socketio import SocketIO
+from server.services import TickTimer
 import spotify.sync as spotify
+
 
 # SPOTIFY_CLIENT = spotify.Client(CLIENT_ID, CLIENT_KEY)
 
@@ -72,7 +74,9 @@ class Player(Flask):
     def start(self, ip='127.0.0.1', port=8888, debug=True, doSetup=True):
         if doSetup:
             self.setup()
+        self.timer = TickTimer()
         socketio.run(self, ip, port=port, debug=debug)
+        self.timer.stop()
 
 
 app, socketio = Player.create_app()
